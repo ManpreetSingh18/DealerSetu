@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   Home as HomeIcon, 
@@ -18,7 +18,6 @@ import {
   Share2, 
   Filter, 
   Search,
-  Menu,
   Bell,
   Settings,
   ArrowRight,
@@ -29,9 +28,31 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+// Property type for sample data
+type SampleProperty = {
+  id: number;
+  type: string;
+  location: string;
+  price: string;
+  deposit: string;
+  status: string;
+  owner: string;
+  phone: string;
+  furnishing: string;
+  area: string;
+  floor: string;
+  age: string;
+  parking: string;
+  isPublic: boolean;
+  image: string;
+  rating: number;
+  views: number;
+};
 
 // Sample data for demonstration
-const sampleProperties = [
+const sampleProperties: SampleProperty[] = [
   {
     id: 1,
     type: "2BHK Flat",
@@ -112,8 +133,8 @@ const sampleProperties = [
 
 export default function ResponsiveHomePage() {
   const [activeTab, setActiveTab] = useState<'inventory' | 'community'>('inventory');
-  const [myProperties, setMyProperties] = useState<any[]>([]);
-  const [communityProperties, setCommunityProperties] = useState<any[]>([]);
+  const [myProperties, setMyProperties] = useState<SampleProperty[]>([]);
+  const [communityProperties, setCommunityProperties] = useState<SampleProperty[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -148,13 +169,15 @@ export default function ResponsiveHomePage() {
     }
   };
 
-  const PropertyCard = ({ property }: { property: any }) => (
+  const PropertyCard = ({ property }: { property: SampleProperty }) => (
     <Card className="property-card-modern mb-6 overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
       {/* Property Image */}
       <div className="relative h-48 overflow-hidden">
-        <img 
+        <Image 
           src={property.image} 
           alt={property.type}
+          width={400}
+          height={300}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute top-3 left-3">
@@ -661,7 +684,7 @@ export default function ResponsiveHomePage() {
                 Why Property Dealers Choose DealerSetu
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Stop struggling with WhatsApp groups and notebooks. Here's how we solve your daily problems:
+                Stop struggling with WhatsApp groups and notebooks. Here&apos;s how we solve your daily problems:
               </p>
             </div>
             

@@ -14,21 +14,11 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Search, Plus, Edit, Trash2, MapPin, Home, Phone, X, Building, Users } from "lucide-react"
+import { Search, Plus, Edit, Trash2, MapPin, Home, Phone, Building, Users } from "lucide-react"
 import Link from "next/link"
-import { supabase, Property } from "@/lib/supabase"
-import { getLocalProperties, deleteLocalProperty, LocalProperty } from "@/lib/localStorage"
+import { supabase } from "@/lib/supabase"
+import { getLocalProperties, deleteLocalProperty } from "@/lib/localStorage"
 
 // Dummy data for properties
 const DUMMY_PROPERTIES = [
@@ -178,7 +168,6 @@ export default function MyInventoryPage() {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
   const [propertyToDelete, setPropertyToDelete] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<any>(null)
 
   // Fetch properties from Supabase
   const fetchProperties = async () => {
@@ -195,7 +184,7 @@ export default function MyInventoryPage() {
         // Fallback to local storage, then dummy data
         const localProperties = getLocalProperties()
         if (localProperties.length > 0) {
-          setProperties(localProperties as Property[])
+          setProperties(localProperties as unknown as Property[])
         } else {
           setProperties(DUMMY_PROPERTIES)
         }

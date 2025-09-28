@@ -30,8 +30,9 @@ export default function LoginPage() {
         await signIn(email, password)
         router.push('/my-inventory')
       }
-    } catch (error: any) {
-      alert(error.message || 'An error occurred')
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred'
+      alert(errorMessage)
     } finally {
       setLoading(false)
     }

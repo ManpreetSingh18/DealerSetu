@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Plus, Phone, MessageCircle, MapPin, Home, Building, Users, Filter } from "lucide-react"
+import { Search, Phone, MessageCircle, MapPin, Home, Building, Users, Filter } from "lucide-react"
 import Link from "next/link"
-import { supabase, Property } from "@/lib/supabase"
+import { supabase } from "@/lib/supabase"
 
 // Community properties data
 const COMMUNITY_PROPERTIES = [
@@ -245,7 +245,7 @@ export default function CommunityPage() {
       
       return matchesSearch && matchesStatus
     })
-  }, [searchTerm, statusFilter])
+  }, [searchTerm, statusFilter, properties])
 
   const handleCall = (phone: string) => {
     if (typeof window !== 'undefined') {
@@ -382,7 +382,7 @@ export default function CommunityPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Community Filter Dropdown */}
             <div className="flex-1">
-              <Select value={communityFilter} onValueChange={(value: any) => setCommunityFilter(value)}>
+              <Select value={communityFilter} onValueChange={(value: "All" | "Public" | "Private" | "Geeta Colony" | "Krishna Nagar" | "Shivpuri") => setCommunityFilter(value)}>
                 <SelectTrigger className="w-full select-dropdown">
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="Select Community" />
@@ -509,14 +509,13 @@ export default function CommunityPage() {
                 : "No dealers have shared their properties yet"
               }
             </p>
-            {communityFilter !== "All" && (
-              <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-500">
+              {communityFilter === "All" ? (
+                <p>Showing all public properties and community properties</p>
+              ) : (
                 <p>Showing properties for: <span className="font-medium">{communityFilter}</span></p>
-                {communityFilter === "All" && (
-                  <p className="text-xs mt-1">(Public + All Communities, excluding Private)</p>
-                )}
-              </div>
-            )}
+              )}
+            </div>
           </div>
         )}
       </div>

@@ -10,8 +10,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowLeft, Save, Home, Building, Users } from "lucide-react"
 import Link from "next/link"
-import { supabase, Property, PropertyInsert } from "@/lib/supabase"
-import { saveLocalProperty, updateLocalProperty, LocalProperty } from "@/lib/localStorage"
+import { supabase, PropertyInsert } from "@/lib/supabase"
+import { saveLocalProperty, updateLocalProperty } from "@/lib/localStorage"
 
 export default function AddPropertyPage() {
   const router = useRouter()
@@ -25,7 +25,7 @@ export default function AddPropertyPage() {
     listing_type: 'Rent',
     availability: 'Available',
     bhk: '1BHK',
-    built_up_area: undefined,
+    built_up_area: 0,
     floor_number: undefined,
     total_floors: undefined,
     furnishing: 'Unfurnished',
@@ -123,7 +123,7 @@ export default function AddPropertyPage() {
     }
   }
 
-  const handleInputChange = (field: keyof PropertyInsert, value: any) => {
+  const handleInputChange = (field: keyof PropertyInsert, value: string | number | boolean | undefined) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -136,7 +136,10 @@ export default function AddPropertyPage() {
 
     try {
       const propertyData = {
-        ...formData
+        ...formData,
+        parking: formData.parking ?? false,
+        photos: formData.photos ?? [],
+        visibility: formData.visibility ?? 'Public'
         // user_id will be null/omitted after the SQL fix
       }
 
