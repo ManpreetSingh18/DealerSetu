@@ -197,7 +197,7 @@ export default function MyInventoryPage() {
       // Fallback to local storage, then dummy data
       const localProperties = getLocalProperties()
       if (localProperties.length > 0) {
-        setProperties(localProperties as Property[])
+        setProperties(localProperties as unknown as Property[])
       } else {
         setProperties(DUMMY_PROPERTIES)
       }
