@@ -1,26 +1,289 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* DealerSetu Color Palette - Earth & Gold Theme (Minimal Green) */
+  --primary: #3E2723;
+  --primary-foreground: #FFFFFF;
+  --accent: #3E2723;
+  --accent-foreground: #FFFFFF;
+  --background: #FEF7E0;
+  --foreground: #3E2723;
+  --surface: #F5F5F5;
+  --surface-foreground: #3E2723;
+  --text: #3E2723;
+  --text-foreground: #FEF7E0;
+  --muted: #424242;
+  --muted-foreground: #757575;
+  --border: #E0E0E0;
+  --input: #F5F5F5;
+  --ring: #3E2723;
+  --popover: #FFFFFF;
+  --popover-foreground: #3E2723;
+  
+  /* Primary Brand Colors */
+  --brand-forest-green: #1B5E20;
+  --brand-forest-green-foreground: #FFFFFF;
+  --brand-sage-green: #4CAF50;
+  --brand-sage-green-foreground: #FFFFFF;
+  --brand-warm-gold: #3E2723;
+  --brand-warm-gold-foreground: #FFFFFF;
+  --brand-earth-brown: #3E2723;
+  --brand-earth-brown-foreground: #FFFFFF;
+  --brand-cream: #FEF7E0;
+  --brand-cream-foreground: #3E2723;
+  --brand-stone-gray: #F5F5F5;
+  --brand-stone-gray-foreground: #3E2723;
+  
+  /* Supporting Colors */
+  --brand-light-sage: #C8E6C9;
+  --brand-light-sage-foreground: #1B5E20;
+  --brand-warm-white: #FFFFFF;
+  --brand-warm-white-foreground: #3E2723;
+  --brand-charcoal: #424242;
+  --brand-charcoal-foreground: #FFFFFF;
+  --brand-soft-gray: #E0E0E0;
+  --brand-soft-gray-foreground: #3E2723;
+  
+  /* Status Colors - No Orange */
+  --success: #4CAF50;
+  --error: #DC2626;
+  --warning: #3E2723;
+  --info: #3E2723;
+  
+  /* Radius */
+  --radius: 0.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #111827;
+  --foreground: #F9FAFB;
+  --surface: #1F2937;
+  --surface-foreground: #F9FAFB;
+  --text: #F9FAFB;
+  --text-foreground: #111827;
+  --muted: #6B7280;
+  --muted-foreground: #9CA3AF;
+  --border: #374151;
+  --input: #374151;
+  --popover: #1F2937;
+  --popover-foreground: #F9FAFB;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-background text-text font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90;
+  }
+  
+  /* Status badges */
+  .status-available {
+    @apply bg-success/10 text-success border-success/20;
+  }
+  
+  .status-rented {
+    @apply bg-error/10 text-error border-error/20;
+  }
+  
+  .status-sold {
+    @apply bg-muted/10 text-muted border-muted/20;
+  }
+  
+  /* Forest & Earth Button Styles */
+  .btn-forest-green {
+    @apply bg-brand-forest-green text-brand-forest-green-foreground hover:bg-brand-forest-green/90;
+  }
+  
+  .btn-sage-green {
+    @apply bg-brand-sage-green text-brand-sage-green-foreground hover:bg-brand-sage-green/90;
+  }
+  
+  .btn-warm-gold {
+    @apply bg-brand-warm-gold text-brand-warm-gold-foreground hover:bg-brand-warm-gold/90;
+  }
+  
+  .btn-earth-brown {
+    @apply bg-brand-earth-brown text-brand-earth-brown-foreground hover:bg-brand-earth-brown/90;
+  }
+  
+  .btn-cream {
+    @apply bg-brand-cream text-brand-cream-foreground hover:bg-brand-cream/90;
+  }
+  
+  .btn-stone-gray {
+    @apply bg-brand-stone-gray text-brand-stone-gray-foreground hover:bg-brand-stone-gray/90;
+  }
+  
+  /* Property card styles */
+  .property-card {
+    @apply bg-surface border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow;
+  }
+  
+  /* Responsive container classes */
+  .container-responsive {
+    @apply container mx-auto px-4;
+  }
+  
+  .container-mobile {
+    @apply max-w-sm mx-auto px-4;
+  }
+  
+  .container-tablet {
+    @apply max-w-2xl mx-auto px-6;
+  }
+  
+  .container-desktop {
+    @apply max-w-4xl mx-auto px-8;
+  }
+
+  /* Enhanced property card styles */
+  .property-card {
+    @apply bg-card border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .property-card:hover {
+    @apply transform scale-[1.02];
+  }
+
+  /* Modern property card styles */
+  .property-card-modern {
+    @apply bg-surface border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300;
+  }
+
+  .property-card-modern:hover {
+    @apply transform -translate-y-1;
+  }
+
+  /* Tab navigation styles */
+  .tab-container {
+    @apply bg-white rounded-lg p-1 shadow-sm border border-gray-200;
+  }
+
+  /* Floating action button */
+  .fab {
+    @apply fixed bottom-20 right-4 z-20 rounded-full w-14 h-14 btn-accent shadow-lg hover:shadow-xl transition-all duration-200;
+  }
+
+  .fab:hover {
+    @apply transform scale-110;
+  }
+
+  /* Bottom navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-10;
+  }
+
+  /* Status indicators */
+  .status-indicator {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  /* Modern glassmorphism effects */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Modern shadows */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Smooth animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Fix dropdown z-index issues */
+  [data-radix-popper-content-wrapper] {
+    z-index: 9999 !important;
+  }
+
+  [data-radix-select-content] {
+    z-index: 9999 !important;
+  }
+
+  /* Form container fixes */
+  .form-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Ensure select dropdowns appear above form content */
+  .select-dropdown {
+    z-index: 9999;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  body {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Touch-friendly button sizes */
+@media (max-width: 768px) {
+  button, .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

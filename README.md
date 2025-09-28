@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DealerSetu - Property Dealer Network
 
-## Getting Started
+A Progressive Web App (PWA) designed specifically for property dealers/brokers in India to manage their inventory and share properties with other dealers.
 
-First, run the development server:
+## 🚀 Features
 
+- **Property Management**: Add, edit, and organize your property inventory
+- **Public/Private Properties**: Share properties with other dealers or keep them private
+- **Community Dashboard**: Browse properties shared by other dealers
+- **Direct Contact**: Call or WhatsApp property owners directly
+- **Mobile-First Design**: Optimized for smartphone usage
+- **PWA Support**: Installable like a native app
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 14 with App Router
+- **Styling**: TailwindCSS + Shadcn UI
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **PWA**: next-pwa plugin
+- **Deployment**: Vercel
+
+## 🎨 Design System
+
+### Color Palette
+- **Primary**: #2563EB (Deep Blue)
+- **Accent**: #F97316 (Orange)
+- **Background**: #F9FAFB (Light Gray)
+- **Success**: #22C55E (Green - Available)
+- **Error**: #DC2626 (Red - Rented/Sold)
+
+### Key Features
+- Mobile-first responsive design
+- Large touch targets (44px minimum)
+- WhatsApp-inspired interface
+- High contrast for readability
+- Card-based layout with clear hierarchy
+
+## 📱 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd dealer-setu
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+# Add your Supabase credentials
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+## 📋 Project Status
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ✅ Completed
+- [x] Project setup with Next.js + TailwindCSS + Shadcn UI
+- [x] PWA configuration
+- [x] Basic UI components and layout
+- [x] Color scheme and design system
+- [x] Mobile-first responsive design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🚧 In Progress
+- [ ] Supabase database setup
+- [ ] User authentication system
+- [ ] Property form implementation
+- [ ] Dashboard functionality
 
-## Deploy on Vercel
+### 📅 Planned
+- [ ] Location search with default options
+- [ ] Property image upload
+- [ ] Push notifications
+- [ ] Hindi language support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🏗️ Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+dealer-setu/
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   └── ui/          # Shadcn UI components
+│   └── lib/
+│       └── utils.ts     # Utility functions
+├── public/
+│   ├── manifest.json    # PWA manifest
+│   └── icon.svg         # App icon
+└── next.config.js       # Next.js configuration
+```
+
+## 🎯 Target Users
+
+- **Primary**: Local Indian property dealers/brokers
+- **Age**: 25-55
+- **Tech Comfort**: WhatsApp-savvy, limited app usage
+- **Language**: English (Hindi planned for future)
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+**DealerSetu** - Connecting property dealers across India 🏠

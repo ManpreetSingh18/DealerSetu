@@ -1,0 +1,40 @@
+---
+description: Always follow mobile-first responsive design. Start with mobile layout and enhance for desktop (sidebar or top navigation, wider grids).
+globs: ["**/*.tsx", "**/*.jsx"]
+alwaysApply: true
+---
+
+description: Use TailwindCSS + Shadcn UI components consistently. Avoid custom CSS unless absolutely necessary.
+globs: ["**/*.tsx", "**/*.jsx"]
+alwaysApply: true
+---
+
+description: Maintain consistent typography, spacing, and color palette throughout the project.
+globs: ["**/*.tsx", "**/*.jsx"]
+alwaysApply: true
+---
+
+description: Ensure navigation adapts: bottom nav on mobile, top nav on desktop. Highlight active page.
+globs: ["app/**/page.tsx", "components/**"]
+alwaysApply: true
+---
+
+description: Keep code clean and modular. Use functional TypeScript components and composition over repetition.
+globs: ["**/*.tsx", "**/*.ts"]
+alwaysApply: true
+---
+
+description: Follow accessibility best practices (alt text, semantic HTML, touch targets ≥44px).
+globs: ["**/*.tsx", "**/*.jsx"]
+alwaysApply: true
+---
+
+description: Optimize for PWA performance: fast load, offline support, and extremely simple UI for less-educated or normal users.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+description: Always read `PRD.txt` for vision of project and update `context.md` so it acts as the complete project memory; ensure that any LLM reading `context.md` understands all aspects of the project and updates `README.md` as needed.
+globs: ["PRD dealer.txt"]
+alwaysApply: true
+---

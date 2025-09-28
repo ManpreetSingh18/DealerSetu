@@ -1,0 +1,9 @@
+rules:
+  - description: |
+      Always store comprehensive knowledge about the application, including its architecture,
+      features, and functionality, within the `context.md` file.
+      This ensures that any other AI or large language model (LLM) can
+      fully understand every aspect of this project.
+    globs:
+      - "**"
+    alwaysApply: true
